@@ -51,7 +51,7 @@ function Main() {
   async function uploadFile(file) {
     setFlag(true);
     let urlfile = URL.createObjectURL(file[0]);
-    console.log("before");
+    
     let data = await getVideoDimensionsOf(urlfile, file[0]);
     // alert(JSON.stringify(data));
     if (data.height > 1032 && data.width > 1920) {
@@ -106,9 +106,9 @@ function Main() {
   }
   const load = async () => {
     try {
-      alert("start");
+   
       await ffmpeg.current.load();
-      alert("start");
+     
       setReady(true);
     } catch (error) {
       alert(JSON.stringify(error));
@@ -148,10 +148,7 @@ function Main() {
         "myFile.mp4",
         await fetchFile(metadata?.url)
       );
-      console.log(
-        metadata,
-        "++++++++++++++++++++++++++++++++++++++++++++++++++++"
-      );
+     
       await ffmpeg.current.run(
         "-i",
         "myFile.mp4",
@@ -169,7 +166,7 @@ function Main() {
         "-2",
         "output.mp4"
       );
-      console.log(ffmpeg.current, "----------------------");
+    
       const data = ffmpeg.current.FS("readFile", "output.mp4");
 
       const newurl = URL.createObjectURL(
